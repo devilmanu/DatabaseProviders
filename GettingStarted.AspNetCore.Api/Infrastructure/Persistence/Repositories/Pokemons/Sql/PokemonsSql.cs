@@ -31,18 +31,8 @@ namespace GettingStarted.AspNetCore.Api.Infrastructure.Persistence.Repositories.
 
         public async Task<IEnumerable<Pokemon>> GetPokemonsAsync()
         {
-            using(var connection = new SqlConnection(_configuration.GetConnectionString("Pokemons")))
-            {
-                try
-                {
-                    var kk = await connection.QueryAsync<Pokemon>("select * from pokemons");
-                }
-                catch (Exception ex)
-                {
-
-                }
-                return await connection.QueryAsync<Pokemon>("select * from pokemons");
-            };
+            using var connection = new SqlConnection(_configuration.GetConnectionString("Pokemons"));
+            return await connection.QueryAsync<Pokemon>("select * from pokemons");
         }
 
         public async Task SaveChangesAsync()
