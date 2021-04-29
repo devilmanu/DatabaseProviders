@@ -1,0 +1,5 @@
+﻿CREATE TABLE Abilities (
+    Id NCHAR(36) NOT NULL,
+    Name LONG NOT NULL,
+    CONSTRAINT PK_Abilities PRIMARY KEY (Id)
+);
